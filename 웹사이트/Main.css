@@ -1,0 +1,232 @@
+@media only screen and (max-width:640px){.dtc-left-cell,.dtc-right-cell {max-width:100%!important;width:100%!important;}.dtc-left-cell img,.dtc-right-cell img {width: 100%;height: auto;}.dtc-left-cell > div {padding: 5px 10px!important;box-sizing: border-box;}.dtc-right-cell > div {padding: 5px 10px!important;box-sizing: border-box;}.dtc-cell-wrap {padding:0 0 0 0!important;}.dtc-cell-wrap > tr > td {padding:0 0!important;}.dtc-cell-wrap > tbody > tr > td {padding:0 0!important;}.dtc-cell-wrap > tbody > tr > td.dtc-text-box {padding:0 10px!important;}.dtc-left-cell > div.dtc-text-box {padding:5px 10px!important;}  .dtc-right-cell > div.dtc-text-box {padding:5px 10px!important;}.dtc-container {width: 94%!important}.dtc-container a {text-decoration: underline;}.dtc-cta-only-wrap {padding: 10px 0!important;}}
+    
+/*색상 변경
+darkorange: 따뜻함
+LightSlateGray : 흐림
+#3A79E3 : 차가움
+
+*/
+:root {
+  --color: #3A79E3 ;
+--secondart: #5EABF0; 
+}
+.CurrIcon{
+    max-width: 226px;
+}
+
+.currbigwrapper{
+    margin-top: -60px;
+    margin-right: -60px;
+    margin-bottom: -70px;
+
+}
+.dtc-container-full{
+        width:100%; padding:40px 0; background-color:#ffffff; margin:0 auto;}
+
+.dtc-container{margin: 0px auto; width: 90%; max-width: 550px; background: #ffffff; border: 0px; }
+
+.contents-box{
+    width: 100%; max-width: 0px; margin: 0 auto; position: relative; border-spacing: 0; clear: both; border-collapse: separate;padding:0;overflow:hidden; width:550px;
+}
+
+.dtc-block{
+    overflow: hidden; margin: 0px auto; padding: 0px; width:100%;max-width: 550px; clear: both; background: none; border:0;  font-size: 0.9rem;
+}
+
+.currwrapper{
+    line-height: 1.2;
+
+}
+.CurrTemp{
+    font-size: 3.5rem;
+}
+.CurrWeather{
+    font-size: 1rem;
+
+}
+
+#top-logo{
+    width: 100%; display: inline; vertical-align: middle; max-width: 100%; border-width: 0px; border-color: initial; border-image: initial; text-align: justify;
+}
+
+.dtc-text-box{padding: 0px; line-height:1.8; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;font-size: 0.9rem; font-family: AppleSDGothic, apple sd gothic neo, noto sans korean, noto sans korean regular, noto sans cjk kr, noto sans cjk, nanum gothic, malgun gothic, dotum, arial, helvetica, MS Gothic, sans-serif!important; color: #333333; width: 100%;
+}
+
+.summarize{padding: 0px 10px 20px 0px;text-align: center; font-size: 0.85rem;}
+
+.now{
+
+    padding: 0px 55px 20px 55px; text-align: center; font-size: 0.85rem;}
+
+/*첫번째 움짤*/
+.gif{padding: 0px 0px 30px 0px; text-align: center; margin: 00px; width:100%
+}
+
+.graybox{
+    background: #f1f3f5;
+    padding: 13px 13px 12px 13px;
+    font-size: 0.9rem;
+}
+
+.todays{
+overflow: hidden; margin: 15px 0px 0px; padding: 1px; width:100%; max-width: 550px; clear: both; background: var(--color); border:0;
+
+}
+
+.weeks{
+overflow: hidden; margin: 30px 0px 0px; padding: 1px; width:100%; max-width: 550px; clear: both; background: #333333; border:0;
+
+}
+
+.tmi{
+overflow: hidden; margin: 30px 0px 0px; padding: 1px; width:100%; max-width: 550px; clear: both; background: #7d21ca; border:0;
+
+}
+
+
+
+.box-text{
+    padding: 3.3px 15px 2px 15px; line-height: 1.8; border-width: 0px; font-size: 1.2rem; color: #ffffff; font-weight: bold;
+}
+.blue{
+    color: var(--color);
+}
+.bold{
+    font-weight: bold;
+
+}
+.weekly{
+    text-align: center;
+    margin: 20px;
+
+}
+
+.todaysum .graybox{
+    padding: 15px 40px;
+}
+.todaysum{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.currentweather{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+}
+.dot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    font-size: 1.2rem;
+    margin-top:-20px; 
+}
+.weekDays{
+    width: 60px;
+}
+
+.weekIcon {
+    display: flex;
+}
+.weekTemp{
+    width: 90px;
+    text-align: right;
+}
+.gray{
+    color: DarkGray; 
+}
+
+.explain{
+    font-size: 0.8rem
+}
+
+.currbigwrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+
+    
+}
+hr{
+    width: 496px;
+    margin-bottom: 23px;
+    margin-top: 0.5px;
+    background-color: lightgray;
+    border: 0px;
+    height: 1px;
+
+}
+#tdy{
+    background: var(--color);
+    color: white;
+    padding: 0 10px;
+    font-size: 14px;
+    border-radius: 4px; 
+    
+}
+#now{
+    background: #FF4920;
+    
+    color: white;
+    width: 50px;
+    font-size: 15px;
+    border-radius: 4px;    
+}
+
+.dots7{
+   visibility: hidden;
+}
+
+
+
+.example_f {
+
+
+   border-radius: 6px;
+   background: linear-gradient(to right, var(--color), var(--secondart)) !important;
+   border: none;
+   color: #FFFFFF;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 0.95rem;
+   padding: 10px 15px;
+   width: 200px;
+   transition: all 0.3s;
+   cursor: pointer;
+   margin: 2px;
+ }
+ .example_f span {
+   cursor: pointer;
+   display: inline-block;
+    vertical-align: middle;
+   position: relative;
+   transition: 0.3s;
+ }
+ .example_f span:after {
+   content: '\1f60e';
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -25px;
+   transition: 0.3s;
+ }
+ .example_f:hover span {
+   padding-right: 25px;
+padding-left: 10px;
+
+}
+ .example_f:hover span:after {
+   opacity: 1;
+   right: 0;
+ }
+
+/* .hourlyTemp3, .hourlyTemp6, .hourlyTemp12, .hourlyTemp21, .hourlyTemp24{
+    display:none
+} */
+
+

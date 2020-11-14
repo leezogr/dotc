@@ -1,132 +1,234 @@
-$(document ).ready(function(){
-    
-    $('#toggle').click(function(){
-        $('.dtc-container-full').toggle();
-    })
+<!DOCTYPE html><html>
+<head>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'>
+<meta charset='UTF-8'>
+<link rel= "stylesheet" type="text/css" href="Main.css">
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="Main.js"></script>
 
-    //날짜//
-    
-    let weatherIcons = {
-        '01d' : 'icons/01d.png',
-        '02d' : 'icons/02d.png',
-        '03d' : 'icons/03d.png',
-        '04d' : 'icons/04d.png',
-        '09d' : 'icons/09d.png',
-        '10d' : 'icons/10d.png',
-        '11d' : 'icons/11d.png',
-        '13d' : 'icons/13d.png',
-        '50d' : 'icons/50d.png',
-        
-        '01n' : 'icons/01n.png',
-        '02n' : 'icons/02n.png',
-        '03n' : 'icons/03n.png',
-        '04n' : 'icons/04n.png',
-        '09n' : 'icons/09n.png',
-        '10n' : 'icons/10n.png',
-        '11n' : 'icons/11n.png',
-        '13n' : 'icons/13n.png',
-        '50n' : 'icons/50n.png',
-    }
-    let today = new Date();   
-    let month = today.getMonth() + 1;  // 월
-    let date = today.getDate();  // 날짜
-    let day = today.getDay();  // 요일
-    let week = new Array('일', '월', '화', '수', '목', '금', '토')
+<style>
 
-    
-    var $date = month + '.' + date + ' ' + week[day] + ''
-    
-    $('.date').append($date)
-    
-
-        $.ajax({     
-        url:'https://api.openweathermap.org/data/2.5/onecall?lat=37.5642135&lon=127.0016985&exclude=minutely&appid=ef1c424f6028d4f1109693439a708064&units=metric&lang=kr',
-        dataType: 'json',
-        type: 'GET',
-        success: function(data){
-            
-            //주간 날씨 요약//
-            
-            for (var i=1; i<8; i++){
-            var d = new Date()
-            var week = new Array('일', '월', '화', '수', '목', '금', '토')
-            var $weeklyWeather = (data.daily[i].weather[0].description);
-            var $weeklyIcon = (data.daily[i].weather[0].icon);
-            var $weeklyMin = Math.ceil(data.daily[i].temp.min)  + '°C';
-            var $weeklyMax = Math.ceil(data.daily[i].temp.max)  + '°C';
-
-            
-            $('.weekly').append('<div class="dot weeklyTemp' + i + '"> </div>'+'<hr class="dots' + i + '">');
-            $('.weeklyTemp'+i).append('<span class="weekDays">'+week[(d.getDay()+i)%7] + '요일</span>');
-            $('.weeklyTemp'+i).append('<span class="weekIcon"> <img src="' + weatherIcons[$weeklyIcon] + '" width="60">');
-            $('.weeklyTemp'+i).children('.weekcon').append('<span class="explain">' + $weeklyWeather +'</span>');
-            $('.weeklyTemp'+i).append('<span class="weekTemp">'+'<span class="gray">'+$weeklyMin + '</span>'+ ' &nbsp&nbsp' + $weeklyMax+'</span>');
-            
-            }
-            
-            //반응형 날씨 요약//
-            
-            var $dailyMin = Math.ceil(data.daily[0].temp.min)  + '°C';
-            var $dailyMax = Math.ceil(data.daily[0].temp.max)  + '°C';
-            var $dailyFeelsMin = Math.ceil(data.daily[0].feels_like.morn)  + '°C';
-            var $dailyFeelsMax = Math.ceil(data.daily[0].feels_like.day)  + '°C';
-            
-            $('.today_minmax').append($dailyMin  + ' / '+ ' '+ $dailyMax +'<br>');
-            $('.today_feelsminmax').append($dailyFeelsMin + ' / '+ ' '+ $dailyFeelsMax +'<br>');
-            
+</style>
 
 
-            
-            //일간 날씨//
-            for (var i=0; i<24; i++){
-                var $hourIcon = (data.hourly[i].weather[0].icon);
-                var $hourWeather = (data.hourly[i].weather[0].description);
-                var $hourTemp = Math.ceil(data.hourly[i].temp) + '°C';
-                var rt = (i+1)*3  
-                $('.hourly').append('<div class="hourlyTemp' + i  + '"> </div>');
-                $('.hourlyTemp'+i).append('<img src="http://openweathermap.org/img/wn/' + $hourIcon + '@2x.png" width="50">'+'<br>');
-                $('.hourlyTemp'+i).prepend($hourTemp+'<br>');                
-                $('.hourlyTemp'+i).append($hourWeather+'<br>');
-                $('.hourlyTemp'+i).append(i + '시'+'<br>')
-            }
-            
-            
-            
-            //현재 날씨//
-            var $Icon = (data.current.weather[0].icon);
-            var $Weather = (data.current.weather[0].description);
-            var $Temp = Math.ceil(data.current.temp) + '°C';
-            var $min = Math.ceil(data.daily[0].temp.min)  + '°C'
-            var $max = Math.ceil(data.daily[0].temp.min)  + '°C'
+</head>
 
+<body>
+
+<div class="dtc-container-full" >
+	<table class="dtc-container">
+		<td class="contents-box">  
  
-            $('.CurrIcon').append('<img class="todayimage" src="' + weatherIcons[$Icon] + '" width="256">');
-            $('.CurrWeather').append($Weather);
-            $('.CurrTemp').prepend($Temp);
-            $('.minmax').appned($min + '/'+ $max)
+                     
+            <!-- Part1. 로고 -->
+			<table class="dtc-block">
+                <a href="Main.html" target="_blank" style="display: inline;">
+                    <!-- 로고 이미지 자동화 -->
+                    <img id="top-logo"src="추움.jpg">
+                </a>
+			</table>
+               
+
+             <table class="dtc-block">
+                        <td class="dtc-text-box">
+							<div class="now">
+								
+                                <div class="currentweather">
+                                   <h3 id="now">now</h3>
+                                    
+                                    <div class="currbigwrapper">
+                                    <div class="currwrapper">
+                                    <div class="CurrTemp"></div>
+                                    <div class="CurrWeather"></div>
+                                    </div>
+                                    <div class="CurrIcon"></div>
+                                    </div>
+                                </div>
+							</div>
+						</td>
+            </table>
+
+        
+			<!-- Part2. 날씨 간략 요약-->
+			<table class="dtc-block">
+                        <td class="dtc-text-box">
+							<div class="summarize">
+								<!-- 리얼 타임 날씨-->
+								
+								<div class="todaysum">
+								    <h3 id="tdy"><span class="date"></span></h3>
+								    <div class="graybox">
+								    <span class="bold">맑음 ☀️ <span class="today_minmax"> </span></span>		<span class="blue bold">체감 🌡 <span class="today_feelsminmax"> </span></span>
+
+                                    </div>
+								</div>
+							</div>
+						</td>
+			</table>	
+           
+            
+           
+            <!-- Part3. 오늘의 날씨 이미지-->
+             <table class="dtc-block">
+                <img src="https://s3.ap-northeast-2.amazonaws.com/img.stibee.com/31983_1604847842.png" style="width: 100%; display: inline; vertical-align: middle; max-width: 100%; border-width: 0px; border-color: initial; border-image: initial; text-align: justify;" width="610">
+                <br>
+                
+                <img src="https://s3.ap-northeast-2.amazonaws.com/img.stibee.com/31983_1604847843.png" style="width: 100%; display: inline; vertical-align: middle; max-width: 100%; border-width: 0px; border-color: initial; border-image: initial; text-align: justify;" width="610">
+			</table>	
+			<br>
+			<br>
+				
+			<!-- Part4. 움짤 설명 박스-->
+            <!-- 			<table class="dtc-block graybox">
+			        <td class="dtc-text-box">
+			            <table class="dtc-cell-wrap">
+			                            <div style="text-align: center;">
+			                                <span class="blue bold">
+			                                🧊얼죽아하다 얼어죽을 날씨</span>
+			                                <br>
+			                                (지난 주 화요일처럼) 겨울 뺨치게 추움
+			                            </div>
+			        </table>
+			    </td>
+			</table> -->		
+				
+			<!-- Part4. 오늘의 날씨 배너 -->
+			<table class="dtc-block todays" >
+				<td class="box-text">
+                        <div>
+                            <span>오늘의 날씨</span>
+                        </div>
+				</td>
+			</table>
+			<!-- Part5. 오늘의 날씨 이미지 -->
+            <!-- Part6. 스타팅 움짤-->
+			<table class="dtc-block">
+                <!--첫 번째 움짤-->
+                <div class="gif">
+                        <img src="https://media2.giphy.com/media/s4Bi420mMDRBK/giphy.gif?cid=ecf05e47xktp430lgivqy4fkzeyeqkko9tt52gke8qpdz5or&rid=giphy.gif" 
+                        style="width: auto; display: inline; vertical-align: middle; max-width: 100%; border-width: 0px; text-align: center;">
+                </div>
+			</table>
+				
+			<!-- Input --> 
+			<!-- Part7. 3줄 요약 -->
+			<table class="dtc-block graybox">			
+				<td style="padding: 3px 0 10px 10px; line-height: 1.8; border-width: 0px;">
+							<div style="text-align: center;">
+								<span class="blue bold">
+                                🥶 얼죽아는 얼어죽을...</span>
+                                <br>
+							</div>
+							
+							<div style="text-align: left;">
+							<br>
+								<span class="bold">🥶 최저 기온 다시 영하권</span><br>
+								아침 체감온도 -1°C<br><br>
+				
+								<span class="bold">🚦일교차 크고 최고 기온도 낮아</span><br>
+								오늘 '최고' 기온 = 토요일 '최저' 기온<br><br>
+                        
+								<span class="bold">🌍 청명한 하늘, 미세먼지 좋음</span><br>
+								구름 없고 대기질 양호
+							</div>
+				</td>
+			</table>
+			<br>
+			<!-- Part8. 옷차림 추천 링크 -->
+			<table class="dtc-block">
+                    <div style="text-align: center; font-size: 0.85rem; line-height: 1.8;">
+                       <br>
+                        <span style="color: rgb(103, 103, 103);">이런 날씨에 어떤 옷을 입어야 할지 궁금하다면?<br>
+                        <a href="https://www.notion.so/8f56737c950b4bb4b36c993c26b91428" class="blue link-edited" target="_blank"> 온도별 추천 옷차림 확인하러 가기</a> 👉
+                        </span>
+                    </div>
+
+			</table>
+			<br>
+			<!-- Part9. 주간 날씨 배너 -->
+			<table class="dtc-block weeks" >
+				<td class="box-text">
+                        <div>
+                            <span>주간 날씨</span>
+                        </div>
+				</td>
+			</table>
+            <!-- Part10. 주간 날씨 -->
+			<table class="dtc-block">
+               <br>
+                <div class="weekly"></div>               
+			</table>
+          
+            <!-- Input --> 
+            <!-- Part11. 주간 날씨 설명 -->
+			<table class="dtc-block graybox">			
+				<td style="padding: 3px; line-height: 1.8; ">
+							<div style="text-align: center;">
+								<span class="blue bold">목요일부터 </span>
+								<span>가을 날씨 회복</span>
+							</div>				
+			</table>							
+            <!-- Part12. 닷씨 TMI 배너 -->
+            <table class="dtc-block tmi" >
+                <td class="box-text">
+                        <div>
+                            <span>닷씨's TMI</span>
+                        </div>
+                </td>
+            </table>
+            <!-- Part13. 닷씨 TMI 움짤 -->
+            <table class="dtc-block">
+                <!--두 번째 움짤-->
+                <div class="gif">
+                        <img src="https://media1.giphy.com/media/jctNeJmYhr6yuCkvjJ/giphy.webp" 
+                        style="width: auto; display: inline; vertical-align: middle; max-width: 100%; border-width: 0px; text-align: center;">
+                </div>
+            </table>
 
 
-        }
-    })
-});
+            <!-- Input -->   
+            <!-- Part14. 닷씨 TMI 설명 -->
+            <table class="dtc-block graybox">			
+            <td style="padding: 0 0 3px 0; line-height: 1.8; ">
+                <span class="blue bold">🤗 소한에 얼어 죽은 사람은 있어도...</span>
+                <br>
+                <br>
+                일년 중 가장 추운 날은 <span class="blue">소한(小寒)</span>, 대략 1월 5일 경
+                <br>
+                <br>
+                절기의 이름만 보면 소한보다 대한이 더 추워야 하지만, 24절기는 중국을 중심으로 만든지라 우리나라에 그대로 적용하기 어려움. 실제로 우리나라는 대한보다 소한이 훨씬 춥다고.
+                <br>
+                <br>
+                <span class="blue">소한에 얼어 죽은 사람은 있어도 대한에 얼어 죽은 사람은 없다</span>는 속담은 이처럼 어떤 현상이나 상황을 핑계 삼아 엄살을 부리는 사람을 놀리는 말.
 
-expireDate = new Date
-expireDate.setMonth(expireDate.getMonth()+6)
-jcount = eval(cookieVal("jaafarCounter"))
-jcount++
-document.cookie = "jaafarCounter="+jcount+";expires=" + expireDate.toGMTString()
+    </table>	
 
-function cookieVal(cookieName) {
-	thisCookie = document.cookie.split("; ")
-	for (i=0; i<thisCookie.length; i++){
-		if (cookieName == thisCookie[i].split("=")[0]){
-			return thisCookie[i].split("=")[1]
-		}
-	}
-	return 0
-}
+            <!-- Part15. 설문 링크 -->
+            <table class="dtc-block">			
+                <td style="padding: 30px; line-height: 1.8; ">
+                            <div style="text-align: center; line-height: 1.5;">
+                                <span>여러분의 소중한 의견은 닷씨에게 큰 힘이 됩니다 :) </span>
+                                <br>
+                                <br>
 
-function page_counter(){
-	for (y=0;y<(jcount.toString().length);y++)
-		document.write('<span class="counter">'+jcount.toString().charAt(y)+'</span>')
-}
+                                 <div class="button_cont" align="center"><a href="https://forms.gle/cgboeeA9ogy1M9NKA" class="example_f" target="_blank" rel="nofollow" onclick="div_show();"><span>설문조사 바로가기</span></a></div>
+
+                            </div>				
+            </table>		
+            <!-- Part16. 푸터 -->
+            <footer class="dtc-block">
+                    <tr>
+                        <td class="dtc-text-box" width="100%" style="font-size: 12px;text-align: center; color: #606060">
+                            <span style="color: rgb(149, 149, 149);"><span class="bold">발신자</span> 닷씨 | <span class="bold"> 연락처 </span>dotcweather@gmail.com<br>
+                            </span>
+                        </td>
+                    </tr>
+            </footer>
+		</td>
+	</table>
+</div>
+            <!-- 방문자 -->
+            <!-- <div>오늘의 페이지 방문자 <SCRIPT>page_counter(jcount);</SCRIPT>\</div> -->
+
+</body>
+</html>

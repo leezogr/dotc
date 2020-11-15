@@ -74,6 +74,42 @@ $(document ).ready(function(){
             $('.today_minmax').append($dailyMin  + ' / '+ ' '+ $dailyMax +'<br>');
             $('.today_feelsminmax').append($dailyFeelsMin + ' / '+ ' '+ $dailyFeelsMax +'<br>');
             
+            var $dW = (data.daily[0].weather[0].icon).substr(0,2);
+
+            //
+            if ($dW == '09' || $dW == '10' || $dW == '11'){
+                $("body").get(0).style.setProperty("--color", "#648CD9");
+                $("body").get(0).style.setProperty("--secondart", "#A4ECFF");
+                $('#top-logo').attr('src','비옴.jpg');
+                
+            }
+            else if($dW == '03' || $dW == '04' || $dW == '50'){
+                $("body").get(0).style.setProperty("--color", "LightSlateGray");
+                $("body").get(0).style.setProperty("--secondart", "#464646");
+                $('#top-logo').attr('src','흐림.jpg');
+
+            }
+            else{
+                if($dailyMin <= 3){
+                    $("body").get(0).style.setProperty("--color", "#3A79E3");
+                    $("body").get(0).style.setProperty("--secondart", "#9BEEFF");
+
+                    $('#top-logo').attr('src','추움.jpg');
+
+
+                }
+                else{
+                     $("body").get(0).style.setProperty("--color", "#FF7676");
+                    $("body").get(0).style.setProperty("--secondary", "#FF8C2A");
+                    $('#top-logo').attr('src','메인.jpg');
+
+                    
+                }
+            }
+
+            
+            
+            
 
 
             

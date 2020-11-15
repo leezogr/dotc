@@ -1,23 +1,23 @@
 @media only screen and (max-width:640px){.dtc-left-cell,.dtc-right-cell {max-width:100%!important;width:100%!important;}.dtc-left-cell img,.dtc-right-cell img {width: 100%;height: auto;}.dtc-left-cell > div {padding: 5px 10px!important;box-sizing: border-box;}.dtc-right-cell > div {padding: 5px 10px!important;box-sizing: border-box;}.dtc-cell-wrap {padding:0 0 0 0!important;}.dtc-cell-wrap > tr > td {padding:0 0!important;}.dtc-cell-wrap > tbody > tr > td {padding:0 0!important;}.dtc-cell-wrap > tbody > tr > td.dtc-text-box {padding:0 10px!important;}.dtc-left-cell > div.dtc-text-box {padding:5px 10px!important;}  .dtc-right-cell > div.dtc-text-box {padding:5px 10px!important;}.dtc-container {width: 94%!important}.dtc-container a {text-decoration: underline;}.dtc-cta-only-wrap {padding: 10px 0!important;}}
     
 /*색상 변경
-darkorange: 따뜻함
+#FF7676 : 따뜻함
 LightSlateGray : 흐림
 #3A79E3 : 차가움
 
 */
-:root {
-  --color: #3A79E3 ;
---secondart: #5EABF0; 
+body {
+  --color:  ;
+--secondary: ; 
 }
 .CurrIcon{
     max-width: 226px;
 }
 
 .currbigwrapper{
-    margin-top: -60px;
+    margin-top: -65px;
     margin-right: -60px;
-    margin-bottom: -70px;
+    margin-bottom: -60px;
 
 }
 .dtc-container-full{
@@ -56,7 +56,7 @@ LightSlateGray : 흐림
 
 .now{
 
-    padding: 0px 55px 20px 55px; text-align: center; font-size: 0.85rem;}
+    padding: 0px 55px 20px 55px; text-align: center; font-size: 0.86rem;}
 
 /*첫번째 움짤*/
 .gif{padding: 0px 0px 30px 0px; text-align: center; margin: 00px; width:100%
@@ -79,7 +79,7 @@ overflow: hidden; margin: 30px 0px 0px; padding: 1px; width:100%; max-width: 550
 }
 
 .tmi{
-overflow: hidden; margin: 30px 0px 0px; padding: 1px; width:100%; max-width: 550px; clear: both; background: #7d21ca; border:0;
+overflow: hidden; margin: 30px 0px 0px; padding: 1px; width:100%; max-width: 550px; clear: both; background: var(--secondary); border:0;
 
 }
 
@@ -164,18 +164,17 @@ hr{
 #tdy{
     background: var(--color);
     color: white;
-    padding: 0 10px;
+    padding: 0 8px;
     font-size: 14px;
     border-radius: 4px; 
     
 }
 #now{
     background: #FF4920;
-    
     color: white;
-    width: 50px;
-    font-size: 15px;
-    border-radius: 4px;    
+    font-size: 16px;
+    border-radius: 4px; 
+    padding: 0 8px;
 }
 
 .dots7{
@@ -188,7 +187,7 @@ hr{
 
 
    border-radius: 6px;
-   background: linear-gradient(to right, var(--color), var(--secondart)) !important;
+   background: linear-gradient(to right, var(--color), var(--secondary)) !important;
    border: none;
    color: #FFFFFF;
    text-align: center;
@@ -216,8 +215,8 @@ hr{
    transition: 0.3s;
  }
  .example_f:hover span {
-   padding-right: 25px;
-padding-left: 10px;
+   padding-right: 23px;
+padding-left: 8px;
 
 }
  .example_f:hover span:after {
